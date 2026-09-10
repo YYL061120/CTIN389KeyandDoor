@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c965822bee000a7409df0b4fab4b49d9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 225125
+  packageName: Ultra Microwave PBR
+  packageVersion: 1.0
+  assetPath: Assets/00Laboratories/Microwave/Scripts/Editor/MicrowaveControllerEditor.cs
+  uploadId: 562709

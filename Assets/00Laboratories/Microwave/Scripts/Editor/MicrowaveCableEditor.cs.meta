@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 8699cee4e2045264aa7a09302ba2d490
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 225125
+  packageName: Ultra Microwave PBR
+  packageVersion: 1.0
+  assetPath: Assets/00Laboratories/Microwave/Scripts/Editor/MicrowaveCableEditor.cs
+  uploadId: 562709

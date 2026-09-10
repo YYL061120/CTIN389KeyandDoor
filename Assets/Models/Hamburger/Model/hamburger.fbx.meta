@@ -1,0 +1,178 @@
+fileFormatVersion: 2
+guid: e9dc8cc708246344297a5cab62ffe7bb
+timeCreated: 1498667174
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: burger_bottom
+    100004: burger_box_bottom
+    100006: burger_box_mesh
+    100008: burger_box_top
+    100010: burger_simple
+    100012: burger_top
+    100014: hamburger
+    100016: lettuce
+    100018: lettuce1
+    100020: onion
+    100022: onion1
+    100024: onion2
+    100026: pickles
+    100028: pickles1
+    100030: pickles2
+    100032: tomato
+    100034: tomato1
+    100036: tomato2
+    100038: tomato3
+    400000: //RootNode
+    400002: burger_bottom
+    400004: burger_box_bottom
+    400006: burger_box_mesh
+    400008: burger_box_top
+    400010: burger_simple
+    400012: burger_top
+    400014: hamburger
+    400016: lettuce
+    400018: lettuce1
+    400020: onion
+    400022: onion1
+    400024: onion2
+    400026: pickles
+    400028: pickles1
+    400030: pickles2
+    400032: tomato
+    400034: tomato1
+    400036: tomato2
+    400038: tomato3
+    2300000: burger_bottom
+    2300002: burger_box_bottom
+    2300004: burger_box_top
+    2300006: burger_simple
+    2300008: burger_top
+    2300010: hamburger
+    2300012: lettuce
+    2300014: lettuce1
+    2300016: onion
+    2300018: onion1
+    2300020: onion2
+    2300022: pickles
+    2300024: pickles1
+    2300026: pickles2
+    2300028: tomato
+    2300030: tomato1
+    2300032: tomato2
+    2300034: tomato3
+    3300000: burger_bottom
+    3300002: burger_box_bottom
+    3300004: burger_box_top
+    3300006: burger_simple
+    3300008: burger_top
+    3300010: hamburger
+    3300012: lettuce
+    3300014: lettuce1
+    3300016: onion
+    3300018: onion1
+    3300020: onion2
+    3300022: pickles
+    3300024: pickles1
+    3300026: pickles2
+    3300028: tomato
+    3300030: tomato1
+    3300032: tomato2
+    3300034: tomato3
+    4300000: burger_simple
+    4300002: burger_bottom
+    4300004: burger_top
+    4300006: hamburger
+    4300008: tomato
+    4300010: tomato1
+    4300012: tomato2
+    4300014: tomato3
+    4300016: lettuce
+    4300018: lettuce1
+    4300020: pickles
+    4300022: pickles1
+    4300024: pickles2
+    4300026: onion
+    4300028: onion1
+    4300030: onion2
+    4300032: burger_box_top
+    4300034: burger_box_bottom
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 2
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 0
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 96566
+  packageName: YGS Hamburger
+  packageVersion: 1.0
+  assetPath: Assets/Models/Hamburger/Model/hamburger.fbx
+  uploadId: 195186

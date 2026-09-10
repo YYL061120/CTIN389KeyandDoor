@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 65b3eb56163edda4eac35566a9866d0b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 261350
+  packageName: Beautiful wall clock
+  packageVersion: 1.0
+  assetPath: Assets/Beautiful wall clock/Prefabs/Clock.prefab
+  uploadId: 602427

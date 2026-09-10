@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 99dc8ac79dab88343ac2f68a6d48cab7
+timeCreated: 1497993089
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 96566
+  packageName: YGS Hamburger
+  packageVersion: 1.0
+  assetPath: Assets/Models/Hamburger/Model/Materials/burger_box.mat
+  uploadId: 195186

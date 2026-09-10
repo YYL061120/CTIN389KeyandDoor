@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 893b3298a745a9b44b76aafe13e687fb
+timeCreated: 1501185569
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 96566
+  packageName: YGS Hamburger
+  packageVersion: 1.0
+  assetPath: Assets/Models/Hamburger/Burger Detailed.prefab
+  uploadId: 195186

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 574e764d6bd681a46bc060b487f7a23d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 225125
+  packageName: Ultra Microwave PBR
+  packageVersion: 1.0
+  assetPath: Assets/00Laboratories/Microwave/Materials/MicrowaveGui.mat
+  uploadId: 562709

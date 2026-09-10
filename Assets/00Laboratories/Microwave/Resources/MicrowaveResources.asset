@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2f6fd4ac3032941b7b339ff58ddadc, type: 3}
+  m_Name: MicrowaveResources
+  m_EditorClassIdentifier: 
+  character0: {fileID: 2800000, guid: 292ef510d44013448a8c4f9370ade3a7, type: 3}
+  character1: {fileID: 2800000, guid: 9d7c974a019da1e4e97ffaa11adf8238, type: 3}
+  character2: {fileID: 2800000, guid: c79bc4f9ba3f7554fa8ddf1a0e4f6a23, type: 3}
+  character3: {fileID: 2800000, guid: 4540371a2675605458d3e6e66d11f921, type: 3}
+  character4: {fileID: 2800000, guid: 03496ccf0f6afde428202ec7a792ae55, type: 3}
+  character5: {fileID: 2800000, guid: de65b10b29bc46144a4b4f4d47850463, type: 3}
+  character6: {fileID: 2800000, guid: d25004e2ce9fad44f9c0cf557a9c7d2a, type: 3}
+  character7: {fileID: 2800000, guid: 9a3dbc0bae8b7ba48a903edd955282f5, type: 3}
+  character8: {fileID: 2800000, guid: 53c2c956141d148448c3dd5e6aab08cc, type: 3}
+  character9: {fileID: 2800000, guid: 033df846f800ef84b9dbc5aeead6c0de, type: 3}
+  characterColumn: {fileID: 2800000, guid: fd3c00d4d21dd5a4eb7c39015f3c696d, type: 3}
+  beepCommand01: {fileID: 8300000, guid: 4278d5dbfda751245945ff61e456ee8b, type: 3}
+  beepCommand02: {fileID: 8300000, guid: bbc38459b962ab5449ee2484a5aadf34, type: 3}
+  cookingBegin: {fileID: 8300000, guid: 2e90c514728e66c49a9e0c25191f6354, type: 3}
+  cookingLoop: {fileID: 8300000, guid: cfd4c3b8422fd214681de4d7f07d0915, type: 3}
+  cookingPause: {fileID: 8300000, guid: eb6533143f4bb594b8581d6cf3f3ab15, type: 3}
+  cookingFinish: {fileID: 8300000, guid: 00ab1407134f8b54e8ab3f1248a5dd14, type: 3}
+  cookingOpen: {fileID: 8300000, guid: 7a7c9009da2f4d04abef6ac15b95a699, type: 3}
+  doorClose01: {fileID: 8300000, guid: d1f5ec7115da2d24280c983ecd96a476, type: 3}
+  doorClose02: {fileID: 8300000, guid: f81e1269e8c653f4da7f5a2efaff3879, type: 3}
+  doorClose03: {fileID: 8300000, guid: 674980b836ef9654fbf7270d470f714b, type: 3}
+  doorOpen: {fileID: 8300000, guid: a42dd6caa94ec794ba29292869d799df, type: 3}
+  microwaveGuiMaterial: {fileID: 2100000, guid: 574e764d6bd681a46bc060b487f7a23d,
+    type: 2}

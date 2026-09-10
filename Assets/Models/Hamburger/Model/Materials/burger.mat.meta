@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2b3394169cb0a3643af55e0cf3ea859c
+timeCreated: 1497982486
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 96566
+  packageName: YGS Hamburger
+  packageVersion: 1.0
+  assetPath: Assets/Models/Hamburger/Model/Materials/burger.mat
+  uploadId: 195186

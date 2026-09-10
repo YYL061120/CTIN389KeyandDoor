@@ -1,0 +1,263 @@
+fileFormatVersion: 2
+guid: d7c9329e591e2e3479c5349df9f10047
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: big knob
+    100002: Button panel
+    100004: Door 3
+    100006: Door strip
+    100008: Door_group
+    100010: Fan
+    100012: Feet
+    100014: Glass
+    100016: Handle
+    100018: Hinge
+    100020: Hinge Location
+    100022: Hinge plate
+    100024: Knobs
+    100026: Lamp
+    100028: Lamp Glass
+    100030: Latches
+    100032: Light compartment
+    100034: Microwave
+    100036: Microwave Fan Hole A
+    100038: Microwave Fan Hole B
+    100040: //RootNode
+    100042: pCylinder10
+    100044: pCylinder11
+    100046: pCylinder12
+    100048: pCylinder13
+    100050: Plate
+    100052: Plate stuff
+    100054: Plate wheel
+    100056: Wheel Rim
+    100058: Glass.001
+    100060: Transparent Metal A
+    100062: Transparent Metal B
+    100064: Door
+    100066: Door Glass A
+    100068: Door Glass B
+    100070: Knob
+    100072: Door Glass
+    400000: big knob
+    400002: Button panel
+    400004: Door 3
+    400006: Door strip
+    400008: Door_group
+    400010: Fan
+    400012: Feet
+    400014: Glass
+    400016: Handle
+    400018: Hinge
+    400020: Hinge Location
+    400022: Hinge plate
+    400024: Knobs
+    400026: Lamp
+    400028: Lamp Glass
+    400030: Latches
+    400032: Light compartment
+    400034: Microwave
+    400036: Microwave Fan Hole A
+    400038: Microwave Fan Hole B
+    400040: //RootNode
+    400042: pCylinder10
+    400044: pCylinder11
+    400046: pCylinder12
+    400048: pCylinder13
+    400050: Plate
+    400052: Plate stuff
+    400054: Plate wheel
+    400056: Wheel Rim
+    400058: Glass.001
+    400060: Transparent Metal A
+    400062: Transparent Metal B
+    400064: Door
+    400066: Door Glass A
+    400068: Door Glass B
+    400070: Knob
+    400072: Door Glass
+    2100000: No Name
+    2100002: Microwave
+    2300000: big knob
+    2300002: Button panel
+    2300004: Door 3
+    2300006: Door strip
+    2300008: Fan
+    2300010: Glass
+    2300012: Handle
+    2300014: Hinge
+    2300016: Hinge plate
+    2300018: Lamp
+    2300020: Lamp Glass
+    2300022: Latches
+    2300024: Light compartment
+    2300026: Microwave
+    2300028: Microwave Fan Hole A
+    2300030: Microwave Fan Hole B
+    2300032: pCylinder10
+    2300034: pCylinder11
+    2300036: pCylinder12
+    2300038: pCylinder13
+    2300040: Plate
+    2300042: Plate wheel
+    2300044: Wheel Rim
+    2300046: Glass.001
+    2300048: Transparent Metal A
+    2300050: Transparent Metal B
+    2300052: Door
+    2300054: Door Glass A
+    2300056: Door Glass B
+    2300058: Knob
+    2300060: Door Glass
+    2300062: //RootNode
+    3300000: big knob
+    3300002: Button panel
+    3300004: Door 3
+    3300006: Door strip
+    3300008: Fan
+    3300010: Glass
+    3300012: Handle
+    3300014: Hinge
+    3300016: Hinge plate
+    3300018: Lamp
+    3300020: Lamp Glass
+    3300022: Latches
+    3300024: Light compartment
+    3300026: Microwave
+    3300028: Microwave Fan Hole A
+    3300030: Microwave Fan Hole B
+    3300032: pCylinder10
+    3300034: pCylinder11
+    3300036: pCylinder12
+    3300038: pCylinder13
+    3300040: Plate
+    3300042: Plate wheel
+    3300044: Wheel Rim
+    3300046: Glass.001
+    3300048: Transparent Metal A
+    3300050: Transparent Metal B
+    3300052: Door
+    3300054: Door Glass A
+    3300056: Door Glass B
+    3300058: Knob
+    3300060: Door Glass
+    3300062: //RootNode
+    4300000: Plate
+    4300002: Plate wheel
+    4300004: Wheel Rim
+    4300006: Handle
+    4300008: Latches
+    4300010: Glass
+    4300012: Door 3
+    4300014: Hinge
+    4300016: Microwave
+    4300018: big knob
+    4300020: pCylinder10
+    4300022: pCylinder11
+    4300024: pCylinder12
+    4300026: pCylinder13
+    4300028: Button panel
+    4300030: Microwave Fan Hole B
+    4300032: Microwave Fan Hole A
+    4300034: Fan
+    4300036: Light compartment
+    4300038: Lamp
+    4300040: Door strip
+    4300042: Hinge plate
+    4300044: Lamp Glass
+    4300046: Glass.001
+    4300048: Transparent Metal B
+    4300050: Transparent Metal A
+    4300052: Door
+    4300054: Door Glass A
+    4300056: Knob
+    4300058: Door Glass B
+    4300060: Door Glass
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 225125
+  packageName: Ultra Microwave PBR
+  packageVersion: 1.0
+  assetPath: Assets/00Laboratories/Microwave/Meshes/Microwave.fbx
+  uploadId: 562709

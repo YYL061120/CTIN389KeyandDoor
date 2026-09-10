@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4075d8116aa77ee4db40a652fb1cd811
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 225125
+  packageName: Ultra Microwave PBR
+  packageVersion: 1.0
+  assetPath: Assets/00Laboratories/Microwave/Prefabs/Microwave Model.prefab
+  uploadId: 562709

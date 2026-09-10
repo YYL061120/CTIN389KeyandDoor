@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 8e1e5b8509351364297e67e5b98bf7c2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 225125
+  packageName: Ultra Microwave PBR
+  packageVersion: 1.0
+  assetPath: Assets/00Laboratories/Microwave/Scripts/Utilities/GLUtilities.cs
+  uploadId: 562709

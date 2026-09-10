@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1de13f46023e677498fece43d013ea07
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 225125
+  packageName: Ultra Microwave PBR
+  packageVersion: 1.0
+  assetPath: Assets/00Laboratories/Microwave/Shaders/MicrowaveGui.shader
+  uploadId: 562709
