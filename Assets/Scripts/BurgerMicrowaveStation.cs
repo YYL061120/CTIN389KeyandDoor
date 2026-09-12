@@ -66,6 +66,8 @@ public class BurgerMicrowaveStation : MonoBehaviour
     private Coroutine normalCookingRoutine;
     private Coroutine infiniteProductionRoutine;
     private float activeCookingDuration;
+    private bool infiniteModeRequestedAfterCooking;
+    private float lastNormalCompletionTime = float.NegativeInfinity;
 
     private void Awake()
     {
@@ -95,6 +97,7 @@ public class BurgerMicrowaveStation : MonoBehaviour
         if (IsCooking || CurrentMode == ProductionMode.Infinite || burgerOutputPrefab == null)
             return false;
 
+        infiniteModeRequestedAfterCooking = false;
         activeCookingDuration = CalculateCookingDuration();
         ExpectedCompletionHour = gameClock != null
             ? gameClock.GetCookingCompletionHourFromCurrentPhase()
@@ -144,7 +147,14 @@ public class BurgerMicrowaveStation : MonoBehaviour
         IsCooking = false;
         normalCookingRoutine = null;
         activeCookingDuration = 0f;
+        lastNormalCompletionTime = Time.time;
         BurgerProduced?.Invoke(burger);
+
+        if (infiniteModeRequestedAfterCooking)
+        {
+            infiniteModeRequestedAfterCooking = false;
+            SetInfiniteProductionMode(true);
+        }
     }
 
     private float CalculateCookingDuration()
@@ -156,6 +166,34 @@ public class BurgerMicrowaveStation : MonoBehaviour
 
     /// <summary>UnityEvent-friendly entry point for the clock-hand puzzle.</summary>
     public void EnableInfiniteProductionMode() => SetInfiniteProductionMode(true);
+
+    /// <summary>
+    /// Called only when the production hand reaches its predicted completion
+    /// hour with a burger already in that slot. The current normal burger is
+    /// always allowed to finish before infinite production begins.
+    /// </summary>
+    public bool RequestInfiniteProductionAfterCurrentBurger()
+    {
+        if (CurrentMode == ProductionMode.Infinite)
+            return true;
+
+        if (IsCooking)
+        {
+            infiniteModeRequestedAfterCooking = true;
+            return true;
+        }
+
+        // Update/coroutine ordering is not deterministic. Accept the clock hit
+        // if normal cooking completed in the same rendered moment.
+        float grace = Mathf.Max(0.1f, Time.deltaTime * 2f);
+        if (Time.time - lastNormalCompletionTime <= grace)
+        {
+            SetInfiniteProductionMode(true);
+            return true;
+        }
+
+        return false;
+    }
 
     public void DisableInfiniteProductionMode() => SetInfiniteProductionMode(false);
 
@@ -186,6 +224,7 @@ public class BurgerMicrowaveStation : MonoBehaviour
         }
         else
         {
+            infiniteModeRequestedAfterCooking = false;
             if (infiniteProductionRoutine != null)
             {
                 StopCoroutine(infiniteProductionRoutine);
@@ -211,6 +250,8 @@ public class BurgerMicrowaveStation : MonoBehaviour
         {
             yield return interval;
             GameObject burger = SpawnVisualBurger();
+            if (microwaveController != null)
+                microwaveController.PlayProductionFinishedSound();
             BurgerProduced?.Invoke(burger);
 
             // Keep the supplied asset controller in its animated cooking state.

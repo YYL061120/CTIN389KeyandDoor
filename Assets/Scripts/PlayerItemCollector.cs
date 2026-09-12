@@ -16,6 +16,14 @@ public class PlayerItemCollector : MonoBehaviour
     [SerializeField] private KeyCode pickupKey = KeyCode.E;
     [SerializeField] private LayerMask collectibleLayers = ~0;
 
+    [Header("Pickup Audio")]
+    [Tooltip("One clip is enough. If several are assigned, one is chosen randomly after each successful pickup.")]
+    [SerializeField] private AudioClip[] pickupSounds = Array.Empty<AudioClip>();
+    [Tooltip("Optional. When empty, a dedicated AudioSource is created on the player at runtime.")]
+    [SerializeField] private AudioSource pickupAudioSource;
+    [Range(0f, 1f)] [SerializeField] private float pickupVolume = 0.8f;
+    [Range(0f, 1f)] [SerializeField] private float pickupSpatialBlend;
+
     public event Action<WorldItem> ItemCollected;
     public event Action<WorldItem> CollectionFailed;
 
@@ -35,6 +43,8 @@ public class PlayerItemCollector : MonoBehaviour
             if (interactionController == null)
                 interactionController = gameObject.AddComponent<PlayerInteractionController>();
         }
+
+        ResolvePickupAudioSource();
     }
 
     private void Update()
@@ -61,6 +71,7 @@ public class PlayerItemCollector : MonoBehaviour
 
         if (candidate.TryCollect(inventory))
         {
+            PlayPickupSound();
             ItemCollected?.Invoke(candidate);
             return true;
         }
@@ -120,5 +131,44 @@ public class PlayerItemCollector : MonoBehaviour
     private bool IsLayerIncluded(int layer)
     {
         return (collectibleLayers.value & (1 << layer)) != 0;
+    }
+
+    private void ResolvePickupAudioSource()
+    {
+        if (pickupAudioSource == null && pickupSounds != null && pickupSounds.Length > 0)
+            pickupAudioSource = gameObject.AddComponent<AudioSource>();
+
+        if (pickupAudioSource == null)
+            return;
+
+        pickupAudioSource.playOnAwake = false;
+        pickupAudioSource.loop = false;
+        pickupAudioSource.spatialBlend = pickupSpatialBlend;
+        pickupAudioSource.dopplerLevel = 0f;
+    }
+
+    private void PlayPickupSound()
+    {
+        if (pickupAudioSource == null || pickupSounds == null || pickupSounds.Length == 0)
+            return;
+
+        int startIndex = UnityEngine.Random.Range(0, pickupSounds.Length);
+        for (int offset = 0; offset < pickupSounds.Length; offset++)
+        {
+            AudioClip clip = pickupSounds[(startIndex + offset) % pickupSounds.Length];
+            if (clip == null)
+                continue;
+
+            pickupAudioSource.PlayOneShot(clip, pickupVolume);
+            return;
+        }
+    }
+
+    private void OnValidate()
+    {
+        pickupVolume = Mathf.Clamp01(pickupVolume);
+        pickupSpatialBlend = Mathf.Clamp01(pickupSpatialBlend);
+        if (pickupAudioSource != null)
+            pickupAudioSource.spatialBlend = pickupSpatialBlend;
     }
 }

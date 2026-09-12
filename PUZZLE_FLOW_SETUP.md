@@ -31,7 +31,11 @@ The shared bottom prompt displays `0/2` or `0/10` whenever E is pressed. One sel
 6. Rotate/scale each anchor so a burger attached as its child looks wedged against the clock face.
 7. Leave **Requires Hour Hand** off.
 
-While the microwave is cooking, the panel tells you its completion hour. Put the selected burger into that slot before the hand arrives. When the hand reaches it, the clock stays stuck and the microwave enters infinite mode.
+While the microwave is cooking, the panel tells you its completion hour. Put the
+selected burger into that slot before the hand arrives. Only the exact predicted
+completion boundary can latch the production clock; burgers in other slots do
+not stop it. The current normal burger finishes first, then the microwave enters
+infinite mode.
 
 ## 4. Monster-feeding clock
 
@@ -39,14 +43,22 @@ While the microwave is cooking, the panel tells you its completion hour. Put the
 2. Assign `ClockController`, `GameManager`, `Burger.asset`, and the twelve anchors as above.
 3. Enable **Requires Hour Hand** and **Stop Clock Until Hand Installed**.
 4. Disable **Hour Hand Installed**, assign `ClockHand.asset`, and assign the model's visible hour-hand child to **Hour Hand Visual**.
-5. Set **Victory Dial Hour** to `6` and choose a **Victory Delay** (default `5` seconds).
+5. Set **Victory Dial Hour** to `12` (`0` in the serialized dial index) and choose a **Victory Delay** (default `5` seconds).
 6. Assign a separate `InteractionCameraPose` for this clock.
 
-Select the clock hand in the hotbar and press E to install it. After installation, E opens the twelve-slot panel. A burger reaching the 6 o'clock slot starts the final victory sequence.
+Select the clock hand in the hotbar and press E to install it. After installation,
+E opens the twelve-slot panel. Only a burger at 12 o'clock can stop this clock.
+The final victory begins when the hand reaches that burger, or immediately when
+the burger is placed while the hand is already at 12.
 
 ## 5. Full-rotation monster check
 
-`ClockController > Monster Check Interval Hours` is now `12`. In `GameManager`, assign the clock that should control regular feeding checks to **Game Clock**. If this clock should continue before the removable hand is installed, turn off **Stop Clock Until Hand Installed** on that clock's puzzle component.
+`ClockController > Monster Check Interval Hours` is `12`, so feeding always occurs
+once per complete rotation. The countdown continues while the removable hand is
+missing: installing it with 6 hours remaining shows 6 o'clock, with 3 hours
+remaining shows 9 o'clock, and at 0 hours it reaches 12 o'clock. In `GameManager`,
+assign that clock to **Game Clock** and keep **Stop Clock Until Hand Installed**
+disabled on that clock's puzzle component.
 
 ## 6. Monster outside the door
 

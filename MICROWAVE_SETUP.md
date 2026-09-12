@@ -45,13 +45,17 @@ While infinite mode is active:
 
 - The microwave stays in its supplied working animation/audio state.
 - It launches one visual-only burger every `Infinite Output Interval` (2 seconds).
+- Each infinite output replays the microwave's normal production-complete sound.
 - Normal DiningArea burgers are removed and replaced by an infinite-supply burger
   mountain. Pressing E on the mountain adds one burger without destroying it.
+- Every 12-hour monster feeding check automatically succeeds while that infinite
+  mountain exists; it is never consumed by the check.
 
 `DiningAreaBurgerReceiver` is attached to the scene's `DiningArea`. Its orange
 gizmo controls the random normal-burger region. Assign custom art to `Burger
-Mountain Prefab` when available; while this field is empty, the receiver builds a
-functional temporary pile from twelve copies of the current burger prefab.
+Mountain Prefab` when available. The mountain is automatically centered and
+bottom-aligned on `Local Spawn Center`; use **Burger Mountain Local Offset**,
+rotation, and scale multiplier for final art adjustments.
 
 The crafting UI is auto-created because `PlayerMicrowaveInteractor.Auto Create UI`
 is enabled. To replace it with hand-authored Unity UI, add one

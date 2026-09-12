@@ -344,6 +344,12 @@ namespace OOLaboratories.Microwave
             cookingSingleAudioSource.Play(MicrowaveResources.Instance.cookingFinish, 0.5f);
         }
 
+        /// <summary>Replays the normal completion sound for externally produced items.</summary>
+        public void PlayProductionFinishedSound()
+        {
+            PlayCookingFinishedSound();
+        }
+
         private void PlayCommandBeepSound()
         {
             lastBeepClip = beepClips.RandomExcept(lastBeepClip);

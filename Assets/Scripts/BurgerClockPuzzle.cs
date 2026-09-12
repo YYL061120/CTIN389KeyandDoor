@@ -26,6 +26,8 @@ public class BurgerClockPuzzle : MonoBehaviour, IPlayerInteractable
     [Header("Burger Anchors (0 = 12 o'clock, 1 = 1 o'clock, etc.)")]
     [SerializeField] private ItemDefinition burgerItem;
     [SerializeField] private GameObject placedBurgerPrefab;
+    [Tooltip("Scale applied only to burgers placed on this clock. Smaller burgers still jam the hand because jamming is slot-based, not collider-based.")]
+    [Range(0.05f, 2f)] [SerializeField] private float jammedBurgerScaleMultiplier = 0.3f;
     [SerializeField] private Transform[] burgerSlotAnchors = new Transform[12];
 
     [Header("Removable Hour Hand")]
@@ -41,6 +43,13 @@ public class BurgerClockPuzzle : MonoBehaviour, IPlayerInteractable
     [SerializeField] private UnityEvent burgerAnchorTriggered;
     [SerializeField] private UnityEvent hourHandWasInstalled;
 
+    [Header("Jammed Warning Light")]
+    [SerializeField] private Light jamWarningLight;
+    [SerializeField] private bool autoCreateJamWarningLight = true;
+    [Min(0f)] [SerializeField] private float jamWarningPeakIntensity = 4f;
+    [Min(0.1f)] [SerializeField] private float jamWarningFlashInterval = 0.8f;
+    [Min(0.1f)] [SerializeField] private float jamWarningRange = 2.5f;
+
     private readonly bool[] occupiedHours = new bool[12];
     private readonly GameObject[] placedBurgerObjects = new GameObject[12];
     private bool anchorLatched;
@@ -53,6 +62,8 @@ public class BurgerClockPuzzle : MonoBehaviour, IPlayerInteractable
     public ClockController Clock => clock;
     public ItemDefinition BurgerItem => burgerItem;
     public bool ShouldRemainPaused => anchorLatched;
+    public bool IsFinalFeedingJamActive => purpose == ClockPurpose.MonsterFeeding
+        && anchorLatched && latchedHour == victoryDialHour;
     public bool HourHandInstalled => !requiresHourHand || hourHandInstalled;
 
     private void Awake()
@@ -63,6 +74,13 @@ public class BurgerClockPuzzle : MonoBehaviour, IPlayerInteractable
             gameManager = FindFirstObjectByType<GameManager>();
         if (purpose == ClockPurpose.Production && microwaveStation == null)
             microwaveStation = FindFirstObjectByType<BurgerMicrowaveStation>();
+
+        if (purpose == ClockPurpose.MonsterFeeding && clock != null)
+            clock.ConfigureMonsterCountdown(victoryDialHour,
+                clock.MonsterCheckIntervalHours);
+
+        ResolveJamWarningLight();
+        SetJamWarningActive(false);
 
         if (requiresHourHand)
         {
@@ -82,6 +100,17 @@ public class BurgerClockPuzzle : MonoBehaviour, IPlayerInteractable
     {
         if (clock != null)
             clock.HourAdvanced -= HandleHourAdvanced;
+        SetJamWarningActive(false);
+    }
+
+    private void Update()
+    {
+        if (jamWarningLight == null || !anchorLatched)
+            return;
+
+        float phase = Mathf.Repeat(Time.unscaledTime, jamWarningFlashInterval)
+            / jamWarningFlashInterval;
+        jamWarningLight.intensity = phase < 0.5f ? jamWarningPeakIntensity : 0f;
     }
 
     public bool CanInteract(PlayerInteractionContext context) => !victorySequenceStarted;
@@ -162,6 +191,17 @@ public class BurgerClockPuzzle : MonoBehaviour, IPlayerInteractable
 
         occupiedHours[dialHour] = true;
         SpawnAnchoredBurger(dialHour);
+
+        // The monster clock uses a physical/visual jam rule: if its hand is
+        // already at 12, placing the burger into the 12 slot jams immediately.
+        if (purpose == ClockPurpose.MonsterFeeding
+            && dialHour == victoryDialHour
+            && clock != null
+            && clock.CurrentDialHour == victoryDialHour)
+        {
+            LatchClockAtHour(dialHour);
+            BeginMonsterVictory();
+        }
         return true;
     }
 
@@ -186,6 +226,7 @@ public class BurgerClockPuzzle : MonoBehaviour, IPlayerInteractable
         {
             anchorLatched = false;
             latchedHour = -1;
+            SetJamWarningActive(false);
             context.ShowMessage("Burger removed — the clock will continue", 1.5f);
         }
         return true;
@@ -220,8 +261,10 @@ public class BurgerClockPuzzle : MonoBehaviour, IPlayerInteractable
 
         GameObject burger = Instantiate(prefab, anchor);
         burger.name = $"Clock Burger - {(dialHour == 0 ? 12 : dialHour)} o'clock";
+        burger.SetActive(true);
         burger.transform.localPosition = Vector3.zero;
         burger.transform.localRotation = Quaternion.identity;
+        burger.transform.localScale *= jammedBurgerScaleMultiplier;
         foreach (Collider itemCollider in burger.GetComponentsInChildren<Collider>(true))
             itemCollider.enabled = false;
         foreach (Rigidbody body in burger.GetComponentsInChildren<Rigidbody>(true))
@@ -237,24 +280,48 @@ public class BurgerClockPuzzle : MonoBehaviour, IPlayerInteractable
     private void HandleHourAdvanced(int currentHour, int totalElapsedHours)
     {
         int dialHour = currentHour % 12;
-        if (!occupiedHours[dialHour])
+        if (anchorLatched || !occupiedHours[dialHour])
+            return;
+
+        if (purpose == ClockPurpose.Production)
+        {
+            // A production-clock burger only catches the hand at the exact
+            // predicted completion boundary. A burger in any other hour is
+            // decoration and cannot physically/logically stop this clock.
+            if (microwaveStation == null
+                || microwaveStation.ExpectedCompletionDialHour != dialHour
+                || !microwaveStation.RequestInfiniteProductionAfterCurrentBurger())
+                return;
+
+            LatchClockAtHour(dialHour);
+            return;
+        }
+
+        // The monster clock has the physical jam rule: only the 12 o'clock
+        // anchor (Victory Dial Hour = 0) can stop its hand and end the game.
+        if (dialHour == victoryDialHour)
+        {
+            LatchClockAtHour(dialHour);
+            BeginMonsterVictory();
+        }
+    }
+
+    private void LatchClockAtHour(int dialHour)
+    {
+        if (anchorLatched)
             return;
 
         anchorLatched = true;
         latchedHour = dialHour;
         clock.SetPaused(true);
+        SetJamWarningActive(true);
         burgerAnchorTriggered?.Invoke();
+    }
 
-        if (purpose == ClockPurpose.Production && microwaveStation != null
-            && microwaveStation.ExpectedCompletionDialHour == dialHour)
-        {
-            microwaveStation.EnableInfiniteProductionMode();
-        }
-        else if (purpose == ClockPurpose.MonsterFeeding
-                 && dialHour == victoryDialHour && !victorySequenceStarted)
-        {
+    private void BeginMonsterVictory()
+    {
+        if (!victorySequenceStarted)
             StartCoroutine(CompleteAfterDelay());
-        }
     }
 
     private IEnumerator CompleteAfterDelay()
@@ -275,10 +342,38 @@ public class BurgerClockPuzzle : MonoBehaviour, IPlayerInteractable
             clock.SetHourHandVisible(visible);
     }
 
+    private void ResolveJamWarningLight()
+    {
+        if (jamWarningLight != null || !autoCreateJamWarningLight)
+            return;
+
+        GameObject warningObject = new GameObject("Jammed Burger Warning Light");
+        warningObject.transform.SetParent(transform, false);
+        jamWarningLight = warningObject.AddComponent<Light>();
+        jamWarningLight.type = LightType.Point;
+        jamWarningLight.color = Color.red;
+        jamWarningLight.shadows = LightShadows.None;
+    }
+
+    private void SetJamWarningActive(bool active)
+    {
+        if (jamWarningLight == null)
+            return;
+
+        jamWarningLight.color = Color.red;
+        jamWarningLight.range = jamWarningRange;
+        jamWarningLight.intensity = active ? jamWarningPeakIntensity : 0f;
+        jamWarningLight.enabled = active;
+    }
+
     private void OnValidate()
     {
         interactionDistance = Mathf.Max(0.1f, interactionDistance);
+        jammedBurgerScaleMultiplier = Mathf.Clamp(jammedBurgerScaleMultiplier, 0.05f, 2f);
         victoryDelay = Mathf.Max(0f, victoryDelay);
+        jamWarningPeakIntensity = Mathf.Max(0f, jamWarningPeakIntensity);
+        jamWarningFlashInterval = Mathf.Max(0.1f, jamWarningFlashInterval);
+        jamWarningRange = Mathf.Max(0.1f, jamWarningRange);
         if (burgerSlotAnchors == null || burgerSlotAnchors.Length != 12)
             Array.Resize(ref burgerSlotAnchors, 12);
     }

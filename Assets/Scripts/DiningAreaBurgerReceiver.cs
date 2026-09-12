@@ -18,6 +18,12 @@ public class DiningAreaBurgerReceiver : MonoBehaviour
     [SerializeField] private Vector3 localSpawnSize = new Vector3(2.5f, 0f, 2.5f);
     [SerializeField] private bool randomizeYaw = true;
 
+    [Header("Burger Mountain Placement")]
+    [Tooltip("Fine adjustment from Local Spawn Center after the mountain's visible bounds are centered and bottom-aligned.")]
+    [SerializeField] private Vector3 burgerMountainLocalOffset;
+    [SerializeField] private Vector3 burgerMountainLocalEulerAngles;
+    [Min(0.01f)] [SerializeField] private float burgerMountainScaleMultiplier = 1f;
+
     private readonly List<GameObject> normalBurgers = new List<GameObject>();
     private GameObject infiniteMountain;
 
@@ -68,10 +74,14 @@ public class DiningAreaBurgerReceiver : MonoBehaviour
             return;
         }
 
-        Vector3 position = transform.TransformPoint(localSpawnCenter);
-        infiniteMountain = Instantiate(burgerMountainPrefab, position, transform.rotation);
+        infiniteMountain = Instantiate(burgerMountainPrefab, transform);
+        infiniteMountain.SetActive(true);
+        infiniteMountain.transform.localPosition = localSpawnCenter + burgerMountainLocalOffset;
+        infiniteMountain.transform.localRotation = Quaternion.Euler(burgerMountainLocalEulerAngles);
+        infiniteMountain.transform.localScale *= burgerMountainScaleMultiplier;
 
         infiniteMountain.name = "Infinite Burger Mountain";
+        AlignMountainBoundsToSpawnPoint();
         foreach (Rigidbody body in infiniteMountain.GetComponentsInChildren<Rigidbody>(true))
         {
             body.linearVelocity = Vector3.zero;
@@ -161,6 +171,21 @@ public class DiningAreaBurgerReceiver : MonoBehaviour
         normalBurgers.Clear();
     }
 
+    private void AlignMountainBoundsToSpawnPoint()
+    {
+        Renderer[] renderers = infiniteMountain.GetComponentsInChildren<Renderer>(true);
+        if (renderers.Length == 0)
+            return;
+
+        Bounds bounds = renderers[0].bounds;
+        for (int index = 1; index < renderers.Length; index++)
+            bounds.Encapsulate(renderers[index].bounds);
+
+        Vector3 target = transform.TransformPoint(localSpawnCenter + burgerMountainLocalOffset);
+        Vector3 currentBottomCenter = new Vector3(bounds.center.x, bounds.min.y, bounds.center.z);
+        infiniteMountain.transform.position += target - currentBottomCenter;
+    }
+
     private void RemoveMissingNormalBurgers()
     {
         normalBurgers.RemoveAll(burger => burger == null);
@@ -174,6 +199,7 @@ public class DiningAreaBurgerReceiver : MonoBehaviour
     private void OnValidate()
     {
         localSpawnSize = Abs(localSpawnSize);
+        burgerMountainScaleMultiplier = Mathf.Max(0.01f, burgerMountainScaleMultiplier);
     }
 
     private void OnDrawGizmosSelected()

@@ -37,6 +37,7 @@ public class ClockController : MonoBehaviour
 
     private float elapsedInCurrentHour;
     private Quaternion handStartingRotation;
+    private int nextMonsterCheckAtElapsedHour;
 
     public int CurrentHour { get; private set; }
     public int TotalElapsedHours { get; private set; }
@@ -44,6 +45,9 @@ public class ClockController : MonoBehaviour
     public float HourProgress => elapsedInCurrentHour / realSecondsPerGameHour;
     public float SecondsIntoCurrentHour => elapsedInCurrentHour;
     public int CurrentDialHour => CurrentHour % 12;
+    public int MonsterCheckIntervalHours => monsterCheckIntervalHours;
+    public int HoursUntilNextMonsterCheck =>
+        Mathf.Max(0, nextMonsterCheckAtElapsedHour - TotalElapsedHours);
     public Transform HourHand => hourHand;
     public bool IsPaused { get; private set; }
 
@@ -55,6 +59,7 @@ public class ClockController : MonoBehaviour
         ResolveHourHand();
         ResolveAudioSources();
         CurrentHour = startingHour;
+        nextMonsterCheckAtElapsedHour = monsterCheckIntervalHours;
         if (hourHand != null)
         {
             handStartingRotation = hourHand.localRotation;
@@ -104,6 +109,23 @@ public class ClockController : MonoBehaviour
     }
 
     /// <summary>
+    /// Aligns this clock to the feeding cycle. With a 12-hour interval it starts
+    /// at 12, keeps progressing while the hand is missing, and therefore shows
+    /// 9 immediately if the hand is installed with three hours remaining.
+    /// </summary>
+    public void ConfigureMonsterCountdown(int feedingDialHour, int hoursUntilFirstCheck)
+    {
+        int countdown = Mathf.Clamp(hoursUntilFirstCheck, 1, 12);
+        int normalizedFeedingHour = ((feedingDialHour % 12) + 12) % 12;
+        startingHour = ((normalizedFeedingHour - countdown) % 12 + 12) % 12;
+        CurrentHour = startingHour;
+        TotalElapsedHours = 0;
+        elapsedInCurrentHour = 0f;
+        nextMonsterCheckAtElapsedHour = countdown;
+        UpdateHourHand();
+    }
+
+    /// <summary>
     /// Time from now to the next hour boundary, plus one complete game hour.
     /// Example with five-second hours: starting at t=23 finishes at t=30 (7s).
     /// </summary>
@@ -131,8 +153,11 @@ public class ClockController : MonoBehaviour
             newHourTickSource.PlayOneShot(newHourTick, newHourTickVolume);
         HourAdvanced?.Invoke(CurrentHour, TotalElapsedHours);
 
-        if (monsterCheckIntervalHours > 0 && TotalElapsedHours % monsterCheckIntervalHours == 0)
+        if (TotalElapsedHours == nextMonsterCheckAtElapsedHour)
+        {
             MonsterCheckReached?.Invoke(TotalElapsedHours);
+            nextMonsterCheckAtElapsedHour += monsterCheckIntervalHours;
+        }
     }
 
     private void ResolveHourHand()

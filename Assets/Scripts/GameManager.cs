@@ -145,6 +145,16 @@ public class GameManager : MonoBehaviour
 
     private void HandleMonsterCheckReached(int totalGameHours)
     {
+        // HourAdvanced is raised first, so a burger that jams the hand exactly
+        // at feeding time wins instead of also starting the normal failure check.
+        BurgerClockPuzzle[] clockPuzzles =
+            FindObjectsByType<BurgerClockPuzzle>(FindObjectsSortMode.None);
+        foreach (BurgerClockPuzzle puzzle in clockPuzzles)
+        {
+            if (puzzle.IsFinalFeedingJamActive)
+                return;
+        }
+
         if (monsterChecksEnabled && !resolvingCheck)
             StartCoroutine(ResolveFeedingCheck());
     }
@@ -334,6 +344,14 @@ public class GameManager : MonoBehaviour
     private bool TryFindBurgerInDiningArea(out BurgerMarker burger)
     {
         burger = null;
+
+        // Infinite microwave mode replaces normal rewards with a permanent
+        // supply. Treat it as food for every 12-hour check without relying on
+        // the mountain's collider position and without consuming the mountain.
+        if (diningAreaBurgerReceiver != null
+            && diningAreaBurgerReceiver.InfiniteSupplyActive)
+            return true;
+
         if (diningArea == null)
         {
             Debug.LogWarning("GameManager cannot check feeding because DiningArea is not assigned.", this);

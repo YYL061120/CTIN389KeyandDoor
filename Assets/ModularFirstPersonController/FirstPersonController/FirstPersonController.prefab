@@ -254,6 +254,10 @@ MonoBehaviour:
   collectibleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
+  pickupSounds: []
+  pickupAudioSource: {fileID: 0}
+  pickupVolume: 0.8
+  pickupSpatialBlend: 0
 --- !u!114 &7631073156030282005
 MonoBehaviour:
   m_ObjectHideFlags: 0
