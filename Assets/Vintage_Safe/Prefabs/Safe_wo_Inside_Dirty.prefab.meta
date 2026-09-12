@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0c2d5888302afc04a83c7d010b0ec6b9
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 183710
+  packageName: Vintage Safe
+  packageVersion: 1.0
+  assetPath: Assets/Vintage_Safe/Prefabs/Safe_wo_Inside_Dirty.prefab
+  uploadId: 402729

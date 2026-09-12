@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7629424bb143d3b44882625593bba43d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 183710
+  packageName: Vintage Safe
+  packageVersion: 1.0
+  assetPath: Assets/Vintage_Safe/Scenes/Demo/LightingData.asset
+  uploadId: 402729

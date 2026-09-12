@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0bb0486d598e730459cb8eb46ead937b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 183710
+  packageName: Vintage Safe
+  packageVersion: 1.0
+  assetPath: Assets/Vintage_Safe/Materials/Skybox.mat
+  uploadId: 402729

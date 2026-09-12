@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6409572966722629596}
   - component: {fileID: 83450173467310215}
   - component: {fileID: 43960629271578034}
+  - component: {fileID: 7473891563690497104}
   m_Layer: 0
   m_Name: tomato (1)
   m_TagString: Untagged
@@ -140,3 +141,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.056799408, y: 0.018459903, z: 0.056799408}
   m_Center: {x: 0, y: 0.04477123, z: 0.042194128}
+--- !u!114 &7473891563690497104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496982292244871970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77863d8d89a74383ad81b71fdf73153c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::WorldItem
+  item: {fileID: 11400000, guid: f44440b91901434f984333167c3f5483, type: 2}
+  quantity: 1
+  canBeCollected: 1

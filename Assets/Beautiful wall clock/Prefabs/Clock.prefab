@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 3506645627813907589}
   - component: {fileID: 1679540121316538447}
   - component: {fileID: 2242646468431998288}
+  - component: {fileID: 8234098816012461310}
   m_Layer: 0
   m_Name: Clock
   m_TagString: Untagged
@@ -185,6 +186,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2797687578962592920, guid: 3712f89f94393684c9d5a5fd495aad7b, type: 3}
+--- !u!114 &8234098816012461310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886664487354571162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3979bb2ab89d45c6a065e650ebd76b59, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::ClockController
+  realSecondsPerGameHour: 5
+  startingHour: 0
+  monsterCheckIntervalHours: 12
+  timeRunning: 1
+  hourHand: {fileID: 5417827662607322515}
+  hourHandChildName: Arrow_3
+  localRotationAxis: {x: 0, y: 0, z: 1}
+  clockwise: 1
+  moveInDiscreteHourSteps: 1
 --- !u!1 &6780907880223380836
 GameObject:
   m_ObjectHideFlags: 0

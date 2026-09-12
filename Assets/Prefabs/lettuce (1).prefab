@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5578531982839153751}
   - component: {fileID: 5800664006930108189}
   - component: {fileID: 4118811164516872719}
+  - component: {fileID: 7473891563690497103}
   m_Layer: 0
   m_Name: lettuce (1)
   m_TagString: Untagged
@@ -140,3 +141,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.18379976, y: 0.035966016, z: 0.18379976}
   m_Center: {x: 0, y: 0.056377143, z: 0}
+--- !u!114 &7473891563690497103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2665865789582490915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77863d8d89a74383ad81b71fdf73153c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::WorldItem
+  item: {fileID: 11400000, guid: f3334ca519804e4abfb96875dc28c600, type: 2}
+  quantity: 1
+  canBeCollected: 1

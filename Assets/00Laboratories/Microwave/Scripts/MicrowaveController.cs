@@ -54,6 +54,13 @@ namespace OOLaboratories.Microwave
         /// <summary>The light needs time to be fully on and off.</summary>
         private float lightVelocity = 0.0f;
 
+        /// <summary>
+        /// The original asset shader exposes _LightColor. URP's Lit shader does
+        /// not, so converted projects use a small real light as a safe fallback.
+        /// </summary>
+        private bool supportsShaderLightColor;
+        private Light urpInteriorLight;
+
         /// <summary>Updates the microwave light.</summary>
         private void UpdateLight()
         {
@@ -84,9 +91,16 @@ namespace OOLaboratories.Microwave
 
             lightVelocity = Mathf.Lerp(lightVelocity, lightTarget, Time.fixedDeltaTime * 20.0f);
 
-            var lightColor = materialInstance.GetColor("_LightColor");
-            lightColor.a = lightVelocity;
-            materialInstance.SetColor("_LightColor", lightColor);
+            if (supportsShaderLightColor)
+            {
+                var lightColor = materialInstance.GetColor("_LightColor");
+                lightColor.a = lightVelocity;
+                materialInstance.SetColor("_LightColor", lightColor);
+            }
+            else if (urpInteriorLight != null)
+            {
+                urpInteriorLight.intensity = lightVelocity * 2.2f;
+            }
         }
 
         #endregion Microwave Light
@@ -376,10 +390,25 @@ namespace OOLaboratories.Microwave
             // assign the copy to the mesh renderer.
             meshRenderer.sharedMaterial = materialInstance;
 
+            supportsShaderLightColor = materialInstance.HasProperty("_LightColor");
+            if (!supportsShaderLightColor)
+            {
+                var lightObject = new GameObject("URP Interior Light");
+                lightObject.transform.SetParent(transform, false);
+                lightObject.transform.localPosition = new Vector3(0.02f, 0.17f, 0.02f);
+                urpInteriorLight = lightObject.AddComponent<Light>();
+                urpInteriorLight.type = LightType.Point;
+                urpInteriorLight.color = new Color(1f, 0.31f, 0.08f);
+                urpInteriorLight.range = 1.6f;
+                urpInteriorLight.intensity = 0f;
+                urpInteriorLight.shadows = LightShadows.None;
+            }
+
             // create a render texture for the display.
             renderTexture = new RenderTexture(256, 99, 24, RenderTextureFormat.ARGB32);
             renderTexture.useMipMap = true;
-            materialInstance.SetTexture("_DisplayTex", renderTexture);
+            if (materialInstance.HasProperty("_DisplayTex"))
+                materialInstance.SetTexture("_DisplayTex", renderTexture);
 
             // find the microwave children by name.
             microwavePlate = transform.Find("Plate");

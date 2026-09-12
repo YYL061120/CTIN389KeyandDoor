@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2113398698959262943}
   - component: {fileID: 5507931463286722870}
   - component: {fileID: 6273307491542720293}
+  - component: {fileID: 7473891563690497102}
   m_Layer: 0
   m_Name: hamburger (1)
   m_TagString: Untagged
@@ -140,3 +141,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.16523826, y: 0.05071949, z: 0.16523826}
   m_Center: {x: 0, y: 0.045093514, z: 0}
+--- !u!114 &7473891563690497102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9048681380483646375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77863d8d89a74383ad81b71fdf73153c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::WorldItem
+  item: {fileID: 11400000, guid: f222a469fb44417291542e036b601827, type: 2}
+  quantity: 1
+  canBeCollected: 1

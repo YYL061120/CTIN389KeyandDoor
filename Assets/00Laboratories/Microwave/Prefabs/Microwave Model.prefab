@@ -193,6 +193,8 @@ GameObject:
   - component: {fileID: 65048864965032890}
   - component: {fileID: 65692791107805958}
   - component: {fileID: 65972306044847808}
+  - component: {fileID: 900000000000000001}
+  - component: {fileID: 900000000000000002}
   m_Layer: 0
   m_Name: Microwave Model
   m_TagString: Untagged
@@ -217,6 +219,7 @@ Transform:
   - {fileID: 4386313438669320}
   - {fileID: 4689408125227964}
   - {fileID: 4694654594176042}
+  - {fileID: 900000000000000004}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -319,7 +322,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.36292872, y: -0.035, z: 0.5392252}
+  m_Size: {x: 0.36292872, y: 0.035, z: 0.5392252}
   m_Center: {x: 0.016177699, y: 0.275, z: 0.0010051727}
 --- !u!65 &65972306044847808
 BoxCollider:
@@ -334,6 +337,78 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.36292872, y: 0.04, z: 0.5392252}
   m_Center: {x: 0.016177699, y: 0.019, z: 0.0010051727}
+--- !u!114 &900000000000000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236928259134988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8ec7fa8543e2244888ed3b842de4cf, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+--- !u!114 &900000000000000002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236928259134988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a7b7053c68f4656ba5b74e6e0288b01, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::BurgerMicrowaveStation
+  interactionDistance: 3.5
+  requiredIngredients:
+  - {fileID: 11400000, guid: f111f22a15bd4e86aa50f009b7e14b91, type: 2}
+  - {fileID: 11400000, guid: f222a469fb44417291542e036b601827, type: 2}
+  - {fileID: 11400000, guid: f3334ca519804e4abfb96875dc28c600, type: 2}
+  - {fileID: 11400000, guid: f44440b91901434f984333167c3f5483, type: 2}
+  microwaveController: {fileID: 900000000000000001}
+  gameClock: {fileID: 0}
+  fallbackCookingSeconds: 5
+  startingMode: 0
+  infiniteOutputInterval: 2
+  diningAreaReceiver: {fileID: 0}
+  burgerOutputPrefab: {fileID: 2641270212376996047, guid: 9124296e5440b5a489fe80f9bdebccc3, type: 3}
+  outputPoint: {fileID: 900000000000000004}
+  upwardImpulse: 4.5
+  forwardImpulse: 0.8
+  outputLifetime: 2
+--- !u!1 &900000000000000003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 900000000000000004}
+  m_Layer: 0
+  m_Name: Burger Output Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &900000000000000004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900000000000000003}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.48, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4227000772680722}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1359887327482410
 GameObject:
   m_ObjectHideFlags: 0

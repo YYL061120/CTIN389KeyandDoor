@@ -83,6 +83,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1127606888399084, guid: 893b3298a745a9b44b76aafe13e687fb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3972408104039702120}
+    - targetCorrespondingSourceObject: {fileID: 1127606888399084, guid: 893b3298a745a9b44b76aafe13e687fb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6248122060443019012}
+    - targetCorrespondingSourceObject: {fileID: 1127606888399084, guid: 893b3298a745a9b44b76aafe13e687fb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7473891563690497105}
   m_SourcePrefab: {fileID: 100100000, guid: 893b3298a745a9b44b76aafe13e687fb, type: 3}
 --- !u!1 &2641270212376996047 stripped
 GameObject:
@@ -116,3 +122,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6248122060443019012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641270212376996047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b63cf5b63c449409cc0a94d5f6c50f7, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::BurgerMarker
+--- !u!114 &7473891563690497105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641270212376996047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77863d8d89a74383ad81b71fdf73153c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::WorldItem
+  item: {fileID: 11400000, guid: f555402898b84867906f54d56edbb618, type: 2}
+  quantity: 1
+  canBeCollected: 1

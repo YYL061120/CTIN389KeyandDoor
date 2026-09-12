@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9051d0d614e0866499c9ff00aa876961
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 183710
+  packageName: Vintage Safe
+  packageVersion: 1.0
+  assetPath: Assets/Vintage_Safe/Materials/Safe_Dirty.mat
+  uploadId: 402729

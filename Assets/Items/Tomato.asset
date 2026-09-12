@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876df7b583cb4d22960249fcc62532fe, type: 3}
+  m_Name: Tomato
+  m_EditorClassIdentifier: Assembly-CSharp::ItemDefinition
+  displayName: Tomato
+  icon: {fileID: 21300000, guid: 6492db1fcc33403a86fd44dc190b8678, type: 3}
+  heldPrefab: {fileID: 496982292244871970, guid: 47a20e784220fb94d9a85f9ce9242994, type: 3}
+  heldLocalPosition: {x: 0, y: 0, z: 0}
+  heldLocalEulerAngles: {x: 0, y: 0, z: 0}
+  heldLocalScale: {x: 6, y: 6, z: 6}
